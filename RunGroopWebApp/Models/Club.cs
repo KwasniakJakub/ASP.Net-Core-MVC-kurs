@@ -16,6 +16,6 @@ public class Club
     public Address Address { get; set; }
     public ClubCategory ClubCategory { get; set; }
     [ForeignKey("AppUser")]
-    public string? AppUserId { get; set; }
+    public int? AppUserId { get; set; }
     public AppUser? AppUser { get; set; }
 }

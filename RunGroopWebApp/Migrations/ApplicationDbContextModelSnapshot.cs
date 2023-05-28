@@ -24,11 +24,11 @@ namespace RunGroopWebApp.Migrations
 
             modelBuilder.Entity("RunGroopWebApp.Models.Address", b =>
                 {
-                    b.Property<int>("Int")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Int"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -42,17 +42,20 @@ namespace RunGroopWebApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Int");
+                    b.HasKey("Id");
 
                     b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("RunGroopWebApp.Models.AppUser", b =>
                 {
-                    b.Property<string>("id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Property<int?>("AddressInt")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
                     b.Property<int?>("Mileage")
@@ -63,7 +66,7 @@ namespace RunGroopWebApp.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("AddressInt");
+                    b.HasIndex("AddressId");
 
                     b.ToTable("AppUser");
                 });
@@ -79,8 +82,8 @@ namespace RunGroopWebApp.Migrations
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("AppUserId")
+                        .HasColumnType("int");
 
                     b.Property<int>("ClubCategory")
                         .HasColumnType("int");
@@ -117,8 +120,8 @@ namespace RunGroopWebApp.Migrations
                     b.Property<int>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<string>("AppUserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("AppUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -148,7 +151,7 @@ namespace RunGroopWebApp.Migrations
                 {
                     b.HasOne("RunGroopWebApp.Models.Address", "Address")
                         .WithMany()
-                        .HasForeignKey("AddressInt");
+                        .HasForeignKey("AddressId");
 
                     b.Navigation("Address");
                 });

@@ -5,7 +5,7 @@
 namespace RunGroopWebApp.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,7 +14,7 @@ namespace RunGroopWebApp.Migrations
                 name: "Addresses",
                 columns: table => new
                 {
-                    Int = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Street = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -22,26 +22,27 @@ namespace RunGroopWebApp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Addresses", x => x.Int);
+                    table.PrimaryKey("PK_Addresses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AppUser",
                 columns: table => new
                 {
-                    id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Pace = table.Column<int>(type: "int", nullable: true),
                     Mileage = table.Column<int>(type: "int", nullable: true),
-                    AddressInt = table.Column<int>(type: "int", nullable: true)
+                    AddressId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AppUser", x => x.id);
                     table.ForeignKey(
-                        name: "FK_AppUser_Addresses_AddressInt",
-                        column: x => x.AddressInt,
+                        name: "FK_AppUser_Addresses_AddressId",
+                        column: x => x.AddressId,
                         principalTable: "Addresses",
-                        principalColumn: "Int");
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -55,7 +56,7 @@ namespace RunGroopWebApp.Migrations
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AddressId = table.Column<int>(type: "int", nullable: false),
                     ClubCategory = table.Column<int>(type: "int", nullable: false),
-                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    AppUserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -64,7 +65,7 @@ namespace RunGroopWebApp.Migrations
                         name: "FK_Clubs_Addresses_AddressId",
                         column: x => x.AddressId,
                         principalTable: "Addresses",
-                        principalColumn: "Int",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Clubs_AppUser_AppUserId",
@@ -84,7 +85,7 @@ namespace RunGroopWebApp.Migrations
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AddressId = table.Column<int>(type: "int", nullable: false),
                     RaceCategory = table.Column<int>(type: "int", nullable: false),
-                    AppUserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    AppUserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -93,7 +94,7 @@ namespace RunGroopWebApp.Migrations
                         name: "FK_Races_Addresses_AddressId",
                         column: x => x.AddressId,
                         principalTable: "Addresses",
-                        principalColumn: "Int",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Races_AppUser_AppUserId",
@@ -103,9 +104,9 @@ namespace RunGroopWebApp.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AppUser_AddressInt",
+                name: "IX_AppUser_AddressId",
                 table: "AppUser",
-                column: "AddressInt");
+                column: "AddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clubs_AddressId",
