@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <Folder Include="Data\Enum\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Repository\" />
     <Folder Include="Pages\" />
   </ItemGroup>
 
