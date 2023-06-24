@@ -85,3 +85,5 @@ D:\Git\ASP.Net-Core-MVC-kurs\RunGroopWebApp\obj\Debug\net6.0\refint\RunGroopWebA
 D:\Git\ASP.Net-Core-MVC-kurs\RunGroopWebApp\obj\Debug\net6.0\RunGroopWebApp.pdb
 D:\Git\ASP.Net-Core-MVC-kurs\RunGroopWebApp\obj\Debug\net6.0\RunGroopWebApp.genruntimeconfig.cache
 D:\Git\ASP.Net-Core-MVC-kurs\RunGroopWebApp\obj\Debug\net6.0\ref\RunGroopWebApp.dll
+D:\Git\ASP.Net-Core-MVC-kurs\RunGroopWebApp\bin\Debug\net6.0\CloudinaryDotNet.dll
+D:\Git\ASP.Net-Core-MVC-kurs\RunGroopWebApp\bin\Debug\net6.0\Newtonsoft.Json.dll

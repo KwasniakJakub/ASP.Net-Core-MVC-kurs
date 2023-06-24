@@ -1,13 +1,9 @@
-﻿@using RunGroopWebApp.Data.Enum
-@using RunGroopWebApp.ViewModels
-@model CreateRaceViewModel
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using RunGroopWebApp.ViewModels
+@using RunGroopWebApp.Data.Enum
+@model EditClubViewModel
 
-<form method="post" asp-action="Create" enctype="multipart/form-data">
+<form method="post" asp-action="Edit" enctype="multipart/form-data">
+    <input type="hidden" value="AddressId" id="AddressId"/>
     <div class="form-group">
         <label asp-for="Title">Title</label>
         <input asp-for="Title" class="form-control" placeholder="Enter Title">
@@ -19,11 +15,11 @@
         <span asp-validation-for="Description" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="RaceCategory">Club Category</label>
-        <select asp-for="RaceCategory" asp-items="@Html.GetEnumSelectList<RaceCategory>()" class="form-control">
+        <label asp-for="ClubCategory">Club Category</label>
+        <select asp-for="ClubCategory" asp-items="@Html.GetEnumSelectList<ClubCategory>()" class="form-control">
             <option>--Select--</option>
         </select>
-        <span asp-validation-for="RaceCategory" class="text-danger"></span>
+        <span asp-validation-for="ClubCategory" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Address.Street">Street</label>
