@@ -20,17 +20,21 @@ public class RaceController : Controller
         _photoService = photoService;
     }
     // GET
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
         IEnumerable<Race> races = await _raceRepository.GetAll();
         return View(races);
     }
+
+    [HttpGet]
     public async Task<IActionResult>  Detail(int id)
     {
         Race race = await _raceRepository.GetByIdAsync(id);
         return View(race);
     }
     
+    [HttpGet]
     public IActionResult Create()
     {
         return View();
@@ -124,6 +128,7 @@ public class RaceController : Controller
         return RedirectToAction("Index");
     }
 
+    [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
         var raceDetail = await _raceRepository.GetByIdAsync(id);
@@ -132,7 +137,7 @@ public class RaceController : Controller
     }
 
     [HttpPost, ActionName("Delete")]
-    public async Task<IActionResult> DeleteClub(int id)
+    public async Task<IActionResult> DeleteRace(int id)
     {
         var raceDetail = await _raceRepository.GetByIdAsync(id);
         if (raceDetail == null) return View("Error");

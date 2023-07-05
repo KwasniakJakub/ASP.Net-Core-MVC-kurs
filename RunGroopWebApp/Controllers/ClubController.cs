@@ -18,17 +18,22 @@ namespace RunGroopWebApp.Controllers
             _clubRepository = clubRepository;
             _photoService = photoService;
         }
+        
+        [HttpGet]
         public async Task<IActionResult> Index() //controller
         {
             IEnumerable<Club> clubs = await _clubRepository.GetAll(); //model
             return View(clubs); //view
         }
+
+        [HttpGet]
         public async Task<IActionResult> Detail(int id)
         {
             Club club = await _clubRepository.GetByIdAsync(id);
             return View(club);
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
@@ -62,6 +67,8 @@ namespace RunGroopWebApp.Controllers
             }
             return View(clubVM);
         }
+
+        [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var club = await _clubRepository.GetByIdAsync(id);
@@ -117,6 +124,7 @@ namespace RunGroopWebApp.Controllers
             }
         }
 
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             var clubDetails = await _clubRepository.GetByIdAsync(id);
