@@ -13,11 +13,13 @@ public class RaceController : Controller
 {
     private readonly IRaceRepository _raceRepository;
     private readonly IPhotoService _photoService;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public RaceController(IRaceRepository raceRepository, IPhotoService photoService)
+    public RaceController(IRaceRepository raceRepository, IPhotoService photoService, IHttpContextAccessor httpContextAccessor)
     {
         _raceRepository = raceRepository;
         _photoService = photoService;
+        _httpContextAccessor = httpContextAccessor;
     }
     // GET
     [HttpGet]
@@ -37,7 +39,12 @@ public class RaceController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        return View();
+        var currentUserId = _httpContextAccessor.HttpContext.User.GetUserId();
+        var createRaceViewModel = new CreateRaceViewModel
+        {
+            AppUserId = currentUserId
+        };
+        return View(createRaceViewModel);
     }
 
     [HttpPost]
@@ -54,7 +61,12 @@ public class RaceController : Controller
                 Image = result.Url.ToString(),
                 AppUserId = raceVM.AppUserId,
                 RaceCategory = raceVM.RaceCategory,
-                Address = raceVM.Address
+                Address = new Address
+                {
+                    Street = raceVM.Address.Street,
+                    City = raceVM.Address.City,
+                    State = raceVM.Address.State
+                }
             };
             _raceRepository.Add(race);
             return RedirectToAction("Index");
