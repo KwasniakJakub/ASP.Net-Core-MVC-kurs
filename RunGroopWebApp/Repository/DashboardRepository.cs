@@ -1,4 +1,6 @@
-﻿using RunGroopWebApp.Data;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RunGroopWebApp.Data;
 using RunGroopWebApp.Interfaces;
 using RunGroopWebApp.Models;
 
@@ -26,5 +28,15 @@ public class DashboardRepository : IDashboardRepository
         var currentUser = _httpContextAccessor.HttpContext?.User.GetUserId();
         var userRace = _dbContext.Races.Where(r => r.AppUser.Id == currentUser);
         return userRace.ToList();
+    }
+
+    public async Task<AppUser> GetUserById(string id)
+    {
+        return await _dbContext.Users.FindAsync(id);
+    }
+
+    public async Task<AppUser> GetByIdNoTracking(string id)
+    {
+        return await _dbContext.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
     }
 }
