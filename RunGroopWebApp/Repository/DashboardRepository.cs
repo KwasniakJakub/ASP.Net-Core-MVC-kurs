@@ -39,4 +39,16 @@ public class DashboardRepository : IDashboardRepository
     {
         return await _dbContext.Users.Where(u => u.Id == id).FirstOrDefaultAsync();
     }
+
+    public bool Update(AppUser user)
+    {
+        _dbContext.Users.Update(user);
+        return Save();
+    }
+
+    public bool Save()
+    {
+        var saved = _dbContext.SaveChanges();
+        return saved > 0 ? true : false;
+    }
 }
