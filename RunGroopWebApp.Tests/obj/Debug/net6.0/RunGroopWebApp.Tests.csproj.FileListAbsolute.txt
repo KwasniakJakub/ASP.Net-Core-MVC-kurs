@@ -162,3 +162,4 @@ D:\Git\ASP.Net-Core-MVC-kurs\RunGroopWebApp.Tests\obj\Debug\net6.0\refint\RunGro
 D:\Git\ASP.Net-Core-MVC-kurs\RunGroopWebApp.Tests\obj\Debug\net6.0\RunGroopWebApp.Tests.pdb
 D:\Git\ASP.Net-Core-MVC-kurs\RunGroopWebApp.Tests\obj\Debug\net6.0\RunGroopWebApp.Tests.genruntimeconfig.cache
 D:\Git\ASP.Net-Core-MVC-kurs\RunGroopWebApp.Tests\obj\Debug\net6.0\ref\RunGroopWebApp.Tests.dll
+D:\Git\ASP.Net-Core-MVC-kurs\RunGroopWebApp.Tests\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
